@@ -84,7 +84,7 @@ const obtenerPagosPorUsuario = () =>
  * @author Beatriz Hernandez <beatriz.hernandez27sp@gmail.com>
  * @version 1.0
  */
-const obtenerTipoTarjeta = () =>
+const obtenerListadoTarjeta = () =>
 new Promise((resolve, reject) => {
     console.log('url:::: ', ipServicioTipoTarjeta);
     fetch(ipServicioTipoTarjeta, {
@@ -115,7 +115,7 @@ new Promise((resolve, reject) => {
 
 const metodos = {
     obtenerTiketsUsuario,
-    obtenerTipoTarjeta,
+    obtenerListadoTarjeta,
     obtenerPagosPorUsuario,
 };
 

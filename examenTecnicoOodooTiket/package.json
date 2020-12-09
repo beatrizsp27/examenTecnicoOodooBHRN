@@ -15,6 +15,7 @@
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-credit-card-display": "^0.3.4",
     "react-native-elements": "^3.0.0-alpha.1",
     "react-native-responsive-dimensions": "^3.1.1",
     "react-native-responsive-screen": "^1.4.1",

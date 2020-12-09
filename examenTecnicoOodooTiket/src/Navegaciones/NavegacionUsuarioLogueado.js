@@ -5,13 +5,15 @@
  * @version 1.0
  */
 import React from 'react';
-import { View} from 'react-native';
+import { View } from 'react-native';
 import { NativeRouter, Switch, Route } from "react-router-native";
 
 //PANTALLA PARA NAVEGAR
 import PantallaPrincipalUsuarioLogueado from "../Pantallas/PantallaPrincipalUsuarioLogueado";
 import PantallaListadoTiket from "../Pantallas/PantallaListadoTiket";
 import PantallaListadoTarjetas from "../Pantallas/PantallaListadoTarjetas";
+import PantallaAgregarTarjeta from "../Pantallas/PantallaAgregarTarjeta";
+
 
 /**
  * @description Pantalla que contiene la navegacion de usuario logueado
@@ -26,6 +28,8 @@ const NavegacionUsuarioLogueado = () => {
                     <Route exact path="/" component={PantallaPrincipalUsuarioLogueado} />
                     <Route exact path="/PantallaListadoTiket" component={PantallaListadoTiket} />
                     <Route exact path="/PantallaListadoTarjetas" component={PantallaListadoTarjetas} />
+                    <Route exact path="/PantallaAgregarTarjeta" component={PantallaAgregarTarjeta} />
+
                 </Switch>
             </View>
         </NativeRouter>
