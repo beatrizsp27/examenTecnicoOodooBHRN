@@ -18,7 +18,7 @@ import estilos from './src/Estilos/EstilosApp';
 
 //SERVICIOS
 import { AuthContext } from './src/componentes/context'
-// import { INICIAR_SESION, CERRAR_SESION, RECUPERAR_TOKEN } from './src/Acciones/TiposConstantes';
+import { INICIAR_SESION, CERRAR_SESION, RECUPERAR_TOKEN } from './src/Acciones/TiposConstantes';
 import { estadosInicialesLogin, iniciarSesionReducer } from './src/Reducers/ReducerAccionesInicioSesion';
 
 /**
@@ -28,43 +28,6 @@ import { estadosInicialesLogin, iniciarSesionReducer } from './src/Reducers/Redu
  */
 const App: () => React$Node = () => {
 
-  //HOOCKS
-  // const [esUsuarioLogueado, setEsUsuarioLogueado] = useState(null);
-
-  // //VALORES INICIALES
-  // const estadosInicialesLogin = {
-  //   esCargando: true,
-  //   nombreUsuario: null,
-  //   tokenUsuario: null,
-  // };
-
-  // //FUNCION QUE DECIDE QUE VALOR DARLE AL USUARIO
-  // const iniciarSesionReducer = (prevState, action) => {
-  //   switch (action.type) {
-  //     case RECUPERAR_TOKEN:
-  //       return {
-  //         ...prevState,
-  //         userToken: action.token,
-  //         esCargando: false,
-  //       };
-  //     case INICIAR_SESION:
-  //       return {
-  //         ...prevState,
-  //         nombreUsuario: action.id,
-  //         tokenUsuario: action.token,
-  //         esCargando: false,
-
-  //       };
-  //     case CERRAR_SESION:
-  //       return {
-  //         ...prevState,
-  //         nombreUsuario: null,
-  //         tokenUsuario: null,
-  //         esCargando: false,
-  //       };
-  //   };
-
-  // }
 
   //SE ENVIA LA INFORMACION CON REACT RECUDER MANDANDO A LLAMAR LAR FUNCIONES
   const [loginState, dispatch] = React.useReducer(iniciarSesionReducer, estadosInicialesLogin);

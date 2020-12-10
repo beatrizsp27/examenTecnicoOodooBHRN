@@ -7,7 +7,7 @@ import {
     ipServicioTikets,
     ipServicioPagos,
     ipServicioTipoTarjeta,
-} from '../Utilerias';
+} from '../Utilerias/UtileriasConexion';
 
 /**
  * @description Método que obtiene informacion de los tikets
@@ -76,41 +76,40 @@ const obtenerPagosPorUsuario = () =>
                 });
             });
     });
-    
 
-    
+
+
 /**
  * @description Método que obtiene informacion para autenticar a un usuario tipo pago
  * @author Beatriz Hernandez <beatriz.hernandez27sp@gmail.com>
  * @version 1.0
  */
 const obtenerListadoTarjeta = () =>
-new Promise((resolve, reject) => {
-    console.log('url:::: ', ipServicioTipoTarjeta);
-    fetch(ipServicioTipoTarjeta, {
-        method: 'GET',
-        headers:
-        {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-    })
-        .then(response => {
-
-            console.log('response:: ', response);
+    new Promise((resolve, reject) => {
+        console.log(':::::::url:::: ', ipServicioTipoTarjeta);
+        fetch(ipServicioTipoTarjeta, {
+            method: 'GET',
+            headers:
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
         })
-        .then(responseJson => {
-            console.log('responseJson: ', responseJson);
-            resolve(responseJson)
+            .then(response => {
+                console.log('response:: 1 ', response);
+            })
+            .then(responseJson => {
+                console.log('responseJson:2 ', responseJson);
+                resolve(responseJson)
 
-        })
-        .catch(function (error) {
-            console.log('Request failed', error);
-            reject({
-                mensajeError: 'error'
+            })
+            .catch(function (error) {
+                console.log('Request failed', JSON.stringify(error));
+                reject({
+                    mensajeError: 'error'
+                });
             });
-        });
-});
+    });
 
 
 const metodos = {

@@ -4,7 +4,7 @@
  * @version 1.0 
  */
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import estilosPantalla from '../Estilos/EstiloPantallaListado';
 
 /**
@@ -13,13 +13,14 @@ import estilosPantalla from '../Estilos/EstiloPantallaListado';
  * @version 1.0 
  * @param elemento - objeto que contiene informacion del elemento del listado de tikcet
  */
-export const elementoLista = ({ elemento }) => {
+export const elementoLista = ({ item }) => {
     return (
         <View style={estilosPantalla.elemento}>
-            <Text style={estilosPantalla.titulo}>{elemento.user}</Text>
+            <Text>{item.user}</Text>
+            {/* <Text style={estilosPantalla.titulo}>{elemento.user}</Text>
             <Text style={estilosPantalla.titulo}>{elemento.number}</Text>
             <Text style={estilosPantalla.titulo}>{elemento.date}</Text>
-            <Text style={estilosPantalla.titulo}>{elemento.amount}</Text>
+            <Text style={estilosPantalla.titulo}>{elemento.amount}</Text> */}
         </View>
     )
 }

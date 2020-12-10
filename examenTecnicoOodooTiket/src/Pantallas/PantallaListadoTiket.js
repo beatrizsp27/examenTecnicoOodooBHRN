@@ -4,12 +4,11 @@
 * @version 1.0
 */
 import React, { useState, useEffect } from 'react';
-import { View, Text, Alert, Button, FlatList, SafeAreaView, ActivityIndicator } from 'react-native'
+import { View, Text, Alert, FlatList, SafeAreaView, ActivityIndicator, TouchableOpacity } from 'react-native'
 
 //ESTILOS 
 import estilosPantalla from '../Estilos/EstiloPantallaListado';
 //COMPONENTE
-import ElementoLista from '../componentes/ElementoListaTicket';
 import ComponenteBoton from '../componentes/ComponenteBoton';
 
 //SERVICIOS
@@ -22,10 +21,23 @@ import { obtenerTiketsUsuario } from '../Servicios/ServicioTikets';
 */
 const PantallaListadoTiket = ({ history }) => {
 
-    //SE RENDERIZA EL COMPONENTE
-    const renderItem = ({ item }) => (
-        <ElementoLista elemento={item} />
+    const ElementoListaTicket = ({ elemento }) => (
+        <TouchableOpacity style={estilosPantalla.elemento}>
+            <Text style={estilosPantalla.titulo}>Numero Tiket: {elemento.number}</Text>
+            <Text style={estilosPantalla.titulo}>Fecha Ticket: {elemento.date}</Text>
+            <Text style={estilosPantalla.titulo}>Monto tiket: {elemento.amount}</Text>
+        </TouchableOpacity>
     );
+
+    //SE RENDERIZA EL COMPONENTE
+    const renderItem = ({ item }) => {
+        console.log(item)
+        return (
+            <ElementoListaTicket
+                elemento={item}
+            />
+        );
+    };
 
     //INICIALIZACION DE HOOKS
     const [listadoTikets, setListadoTikets] = useState([])
@@ -46,7 +58,7 @@ const PantallaListadoTiket = ({ history }) => {
             .catch((error) => {
                 console.log("respuesta" + error)
                 console.log("error: ");
-                Alert.alert('Error!', 'Error al obtener el listado de tarjetas', [
+                Alert.alert('Error!', 'Error al obtener el listado de Tikets', [
                     { text: 'Aceptar' }
                 ]);
                 setListadoTikets([])
@@ -80,32 +92,41 @@ const PantallaListadoTiket = ({ history }) => {
     * @version 1.0
     */
     useEffect(() => {
-        obtenerListadoTicketServicio()
-    }, []);
+        // obtenerListadoTicketServicio()
+        setEsCargando(false)
+    });
 
     if (estaCargando) {
         return (
-            <ActivityIndicator />
+            <View style={{ flex: 1, justifyContent: "center" }}>
+                <ActivityIndicator size="large" color="#0000ff" />
+            </View>
         );
     } else {
         //SE RENDERIZA LA INFORMACION
         return (
             <View>
-                <Text> Listado de ticket</Text>
-                {/* <Button title="Regresar" onPress={() => { history.push("/") }} ></Button> */}
+                <Text style={estilosPantalla.tituloTexto}> Listado de ticket</Text>
                 <ComponenteBoton
                     title="Regresar"
                     action={() => { history.push("/") }}
                     bgColor="#3D74B5"
                     color={'#F7F8FA'}
                 />
-                <SafeAreaView style={estilosPantalla.container}>
-                    <FlatList
-                        data={respuestaTiket}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                    />
-                </SafeAreaView>
+                {
+                    respuestaTiket.length > 0 ?
+                        <SafeAreaView style={estilosPantalla.container}>
+                            <FlatList
+                                data={respuestaTiket}
+                                renderItem={renderItem}
+                                keyExtractor={item => item.id.toString()}
+                            />
+                        </SafeAreaView>
+                        :
+                        <Text style={estilosPantalla.tituloTexto}> No hay tickets a mostrar</Text>
+
+                }
+
             </View>
         );
     }

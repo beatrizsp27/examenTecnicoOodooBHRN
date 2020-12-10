@@ -57,7 +57,7 @@ const PantallaInicioSesion = () => {
             //SE MANDA A LLAMAR EL SERVICIO
             autenticarUsuarios(data.usuario, data.contrasenia).then(
                 (respuesta) => {
-                    console.log("respuesta" + respuesta);
+                    console.log("respuesta::: " + respuesta);
                     //SE INICIA SESION PARA ACCEDER A DASBOAR DE LA APLICACION
                     signIn(data.usuario, data.contrasenia)
 
@@ -146,7 +146,6 @@ const PantallaInicioSesion = () => {
                         maxLength={50}
                         autoCapitalize="none"
                         onChangeText={value => ontenerValorIngresadoUsuario(value)}
-                    // onEndEditing={(e) => handleValidUser(e.nativeEvent.text)}
                     />
                     <View style={estilos.textInput} >
                         {data.esUsuarioValido ? null :

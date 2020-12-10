@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import reducerTarjeta from '../Reducers/ReducerAccionesTarjeta';
+import reducerTarjetaReducer from '../Reducers/ReducerAccionesTarjeta';
 
 const rootReducer = combineReducers({
-    reducerTarjeta: reducerTarjeta
+    reducerTarjetaReducer: reducerTarjetaReducer
 })
 
 const configureStore = () => createStore(rootReducer);

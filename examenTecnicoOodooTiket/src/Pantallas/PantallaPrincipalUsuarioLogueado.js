@@ -14,6 +14,7 @@ import ComponenteBoton from '../componentes/ComponenteBoton';
 
 const PantallaPrincipalUsuarioLogueado = ({ history }) => {
 
+    //SE CIERRA SESION CON CONTEXTO DE AUTENTICACION redux
     const { signOut } = React.useContext(AuthContext);
 
 
